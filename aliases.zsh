@@ -21,7 +21,7 @@ alias aptupd='sudo apt update'
 alias aptupg='sudo apt upgrade'
 
 ### BETTER DIRECTORY LIST ###
-alias ll='ls -Alf'
+alias ll='ls -Alh'
 
 ## GIT ###
 alias commit='git commit -m'
