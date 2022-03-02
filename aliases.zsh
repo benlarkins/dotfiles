@@ -1,19 +1,21 @@
-#    BBBBBBBBBBBBBBBBB   LLLLLLLLLLL   
-#    B::::::::::::::::B  L:::::::::L             
-#    B::::::BBBBBB:::::B L:::::::::L             
-#    BB:::::B     B:::::BLL:::::::LL             
-#      B::::B     B:::::B  L:::::L               
-#      B::::B     B:::::B  L:::::L               
-#      B::::BBBBBB:::::B   L:::::L               
-#      B:::::::::::::BB    L:::::L               
-#      B::::BBBBBB:::::B   L:::::L               
-#      B::::B     B:::::B  L:::::L               
-#      B::::B     B:::::B  L:::::L               
-#      B::::B     B:::::B  L:::::L         LLLLLL
-#    BB:::::BBBBBB::::::BLL:::::::LLLLLLLLL:::::L
-#    B:::::::::::::::::B L::::::::::::::::::::::L
-#    B::::::::::::::::B  L::::::::::::::::::::::L
-#    BBBBBBBBBBBBBBBBB   LLLLLLLLLLLLLLLLLLLLLLLL
+#
+#   ZZZZZZZZZZZZZZZZZZZ   SSSSSSSSSSSSSSS HHHHHHHHH     HHHHHHHHH
+#   Z:::::::::::::::::Z SS:::::::::::::::SH:::::::H     H:::::::H
+#   Z:::::::::::::::::ZS:::::SSSSSS::::::SH:::::::H     H:::::::H
+#   Z:::ZZZZZZZZ:::::Z S:::::S     SSSSSSSHH::::::H     H::::::HH
+#   ZZZZZ     Z:::::Z  S:::::S              H:::::H     H:::::H  
+#           Z:::::Z    S:::::S              H:::::H     H:::::H  
+#          Z:::::Z      S::::SSSS           H::::::HHHHH::::::H  
+#         Z:::::Z        SS::::::SSSSS      H:::::::::::::::::H  
+#        Z:::::Z           SSS::::::::SS    H:::::::::::::::::H  
+#       Z:::::Z               SSSSSS::::S   H::::::HHHHH::::::H  
+#      Z:::::Z                     S:::::S  H:::::H     H:::::H  
+#   ZZZ:::::Z     ZZZZZ            S:::::S  H:::::H     H:::::H  
+#   Z::::::ZZZZZZZZ:::ZSSSSSSS     S:::::SHH::::::H     H::::::HH
+#   Z:::::::::::::::::ZS::::::SSSSSS:::::SH:::::::H     H:::::::H
+#   Z:::::::::::::::::ZS:::::::::::::::SS H:::::::H     H:::::::H
+#   ZZZZZZZZZZZZZZZZZZZ SSSSSSSSSSSSSSS   HHHHHHHHH     HHHHHHHHH
+
 
 ### APT COMMANDS ###
 alias aptup='sudo apt update && sudo apt upgrade'
