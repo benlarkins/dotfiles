@@ -11,6 +11,6 @@ edit .Xresources
 !Xcursor.theme: cursor-theme
 Xcursor.size: 24
 ```
-## Set keyboard layout for all desktops
+## Set keyboard options for all desktops
 edit /etc/X11/xorg.conf.d/99-killX.conf
 `Option         "XkbOptions" "terminate:ctrl_alt_bksp,ctrl:swap_lalt_lctl_lwin,caps:escape"`
