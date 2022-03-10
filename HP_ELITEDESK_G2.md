@@ -5,7 +5,7 @@ edit picom.conf
 set `backend = "glx"`
 and `vsync = true`
 
-## Fix large cursor
+## Fix large cursor on 4K monitor
 edit .Xresources
 ```
 !Xcursor.theme: cursor-theme
