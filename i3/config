@@ -174,10 +174,10 @@ bindsym $mod+$up focus up
 bindsym $mod+$right focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym ctrl+Left focus left
+bindsym ctrl+Down focus down
+bindsym ctrl+Up focus up
+bindsym ctrl+Right focus right
 
 # move focused window
 bindsym $mod+Shift+$left move left
@@ -195,13 +195,13 @@ bindsym $mod+Shift+Right move right
 
 # next/previous workspace
 
-bindsym Mod1+Tab workspace next
-bindsym Mod1+Shift+Tab workspace prev
+bindsym ctrl+Tab workspace next
+bindsym ctrl+Shift+Tab workspace prev
 bindsym $mod+Tab workspace back_and_forth
 
 # navigate workspaces next / previous
-bindsym Mod1+Ctrl+Right workspace next
-bindsym Mod1+Ctrl+Left workspace prev
+bindsym $mod+Right workspace next
+bindsym $mod+Left workspace prev
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -462,9 +462,9 @@ bindsym --release $mod+Escape exec xkill
 
 # Function Keybinds
 # Browser
-bindsym $mod+F1 exec --no-startup-id exo-open --launch webbrowser;focus
+bindsym $mod+F1 exec --no-startup-id brave;focus
 # qwerty/azerty conflict with w
-# bindsym $mod+w exec --no-startup-id exo-open --launch webbrowser;focus
+# bindsym $mod+w exec --no-startup-id exo-open --launch brave;focus
 bindsym control+mod1+f exec --no-startup-id firefox;focus
 bindsym control+mod1+v exec --no-startup-id vivaldi-stable;focus
 bindsym control+mod1+g exec --no-startup-id chromium;focus
