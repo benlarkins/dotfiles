@@ -85,8 +85,8 @@ myKeys =
         ,("<XF86AudioPrev>",              spawn "playerctl previous")
         ,("<XF86AudioStop>",              spawn "playerctl stop")
         ,("<XF86AudioMute>",              spawn "amixer -D pulse set Master 1+ toggle")
-        ,("<XF86AudioRaiseVolume>",       spawn "amixer set Master 10%+")
-        ,("<XF86AudioLowerVolume>",       spawn "amixer set Master 10%-")]
+        ,("<XF86AudioRaiseVolume>",       spawn "amixer set Master 5%+")
+        ,("<XF86AudioLowerVolume>",       spawn "amixer set Master 5%-")]
 
 
 -- MOUSE BINDINGS
@@ -107,7 +107,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList
     ]
 
 -- LAYOUTS
-mySpacing i   = spacingRaw False
+mySpacing i =   spacingRaw False
                 (Border i i i i)
                 True
                 (Border i i i i)
@@ -131,12 +131,13 @@ myLayout = mySpacing 10 $ tiled ||| Mirror tiled ||| Full
 -- WINDOW RULES
 -- Add new window below the focused window and focus the new window
 myManageHook = insertPosition Below Newer <+> composeAll
-    [ className =? "MPlayer"        --> doFloat
-    , className =? "Gimp"           --> doFloat
-    , className =? "nuclear"        --> doShift "5"
-    , resource  =? "desktop_window" --> doIgnore
-    , resource  =? "kdesktop"       --> doIgnore
-    , isFullscreen                  --> doFullFloat ]
+    [ className =? "MPlayer"                --> doFloat
+    , className =? "Gimp"                   --> doFloat
+    , className =? "nuclear"                --> doShift "5"
+    , className =? "Xdg-desktop-portal-gtk" --> doFloat
+    , resource  =? "desktop_window"         --> doIgnore
+    , resource  =? "kdesktop"               --> doIgnore
+    , isFullscreen                          --> doFullFloat ]
 
 -- Event handling
 myEventHook = mempty
@@ -163,6 +164,7 @@ myLogHook h = dynamicLogWithPP $ xmobarPP
 -- START UP
 myStartupHook = do
         spawnOnce "nitrogen --restore &"
+        spawnOnce "xautolock -time 10 -locker \"systemctl suspend\" &"
         spawnOnce "picom --config $HOME/.config/picom/picom.conf &"
         spawnOnce "setxkbmap -option terminate:ctrl_alt_bksp,ctrl:swap_lalt_lctl_lwin,caps:escape &"
 
