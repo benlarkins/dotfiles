@@ -20,7 +20,7 @@ import qualified Data.Map        as M
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.InsertPosition
 import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
+import XMonad.Hooks.ManageHelpers (isFullscreen, doCenterFloat, doFullFloat)
 
 -- LAYOUT
 import XMonad.Layout.Spacing
@@ -75,9 +75,12 @@ myKeys =
 
         -- LAUNCH APPS
         ,("M-x",         spawn "arcolinux-logout")
+        ,("M-w",         spawn "brave")
         ,("C-S-4",       spawn "gnome-screenshot -i")
+        ,("C-S-5",       spawn "kooha")
         ,("C-<Space>",   spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
         ,("M-<Return>",  spawn myTerminal)
+        -- ,("M-t",         spawn myTerminal)
 
         -- AUDIO CONTROLS
         ,("<XF86AudioPlay>",              spawn "playerctl play-pause")
@@ -129,15 +132,32 @@ myLayout = mySpacing 10 $ tiled ||| Mirror tiled ||| Full
                 delta   = 3/100
 
 -- WINDOW RULES
--- Add new window below the focused window and focus the new window
-myManageHook = insertPosition Below Newer <+> composeAll
-    [ className =? "MPlayer"                --> doFloat
-    , className =? "Gimp"                   --> doFloat
-    , className =? "nuclear"                --> doShift "5"
-    , className =? "Xdg-desktop-portal-gtk" --> doFloat
+myManageHook = composeAllFocusFloats
+    [ className =? "MPlayer"
+    , className =? "confirm"
+    , className =? "file_progress"
+    , className =? "dialog"
+    , className =? "download"
+    , className =? "error"
+    , className =? "notification"
+    , className =? "Xdg-desktop-portal-gtk"
+    , className =? "Gimp" ]
+    <+> composeAllCenterFloats
+    [ className =? "kooha" ]
+    <+> composeAll
+    [ className =? "nuclear"                --> doShift "5"
     , resource  =? "desktop_window"         --> doIgnore
     , resource  =? "kdesktop"               --> doIgnore
-    , isFullscreen                          --> doFullFloat ]
+    , isFullscreen                          --> doFocusFullFloat ]
+-- Add new window below the focused window and focus the new window
+    <+> composeAll
+    [ insertPosition Below Newer ]
+  where
+    composeAllCenterFloats = composeAll . map (--> doFocusCenterFloat)
+    composeAllFocusFloats = composeAll . map (--> doFocusFloat)
+    doFocusFloat = composeAll [doFloat, insertPosition Above Newer]
+    doFocusCenterFloat = composeAll [doCenterFloat, insertPosition Above Newer]
+    doFocusFullFloat = composeAll [doFullFloat, insertPosition Above Newer]
 
 -- Event handling
 myEventHook = mempty
@@ -164,9 +184,10 @@ myLogHook h = dynamicLogWithPP $ xmobarPP
 -- START UP
 myStartupHook = do
         spawnOnce "nitrogen --restore &"
-        spawnOnce "xautolock -time 10 -locker \"systemctl suspend\" &"
-        spawnOnce "picom --config $HOME/.config/picom/picom.conf &"
+        spawnOnce "xautolock -time 60 -locker \"systemctl suspend\" &"
         spawnOnce "setxkbmap -option terminate:ctrl_alt_bksp,ctrl:swap_lalt_lctl_lwin,caps:escape &"
+        spawnOnce "picom --config $HOME/.config/picom/picom.conf &"
+        spawn ("sleep 2 && trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 36 --tint 0x272822 --height 30")
 
 
 -- RUN XMONAD MAIN
