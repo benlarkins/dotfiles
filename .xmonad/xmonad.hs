@@ -35,7 +35,7 @@ myTerminal          = "alacritty"
 myBrowser           = "brave"
 myFocusFollowsMouse = True
 myModMask           = mod4Mask
-myWorkspaces        = ["1","2","3","4","5"]
+myWorkspaces        = ["1 ","2 ","3 ","4 ","5 "]
 
 -- BORDER SETTINGS
 myBorderWidth        = 2
@@ -43,10 +43,11 @@ myNormalBorderColor  = "#dddddd"
 myFocusedBorderColor = "#b14350"
 
 -- COLORS
-blue   = "#6A7EC8"
-green  = "#86B42B"
-red    = "#C4265E"
-yellow = "#B3B42B"
+blue     = "#6A7EC8"
+dimWhite = "#c9d1d9"
+green    = "#86B42B"
+red      = "#b14350"
+yellow   = "#B3B42B"
 
 -- KEY BINDINGS
 myKeys :: [(String, X ())]
@@ -162,24 +163,27 @@ myManageHook = composeAllFocusFloats
 -- Event handling
 myEventHook = mempty
 
-mapToCustomName "1" = "Code"
-mapToCustomName "2" = "Chat"
-mapToCustomName "3" = "Other"
-mapToCustomName "4" = "Extra"
-mapToCustomName "5" = "Music"
+-- mapToCustomName "1" = "1"
+-- mapToCustomName "2" = "2"
+-- mapToCustomName "3" = "3"
+-- mapToCustomName "4" = "4"
+-- mapToCustomName "5" = "5"
 mapToCustomName x = x
 
 -- Status bars and logging
-myPPCurrent x = wrap "(" ")" $ xmobarColor blue "white" $ mapToCustomName x
-myPPLayout "Spacing Spacing Tall" = "Tall"
-myPPHidden = mapToCustomName
+myPPCurrent         = xmobarColor "white" ""
+myPPHiddenNoWindows = xmobarColor dimWhite ""
+myPPHidden          = mapToCustomName
+myPPOrder           = \(ws:_:t:_) -> [ws,t]
 
 myLogHook h = dynamicLogWithPP $ xmobarPP
-                { ppCurrent = myPPCurrent
-                , ppHidden = myPPHidden
-                , ppLayout = myPPLayout
-                , ppOutput = hPutStrLn h
-                , ppTitle = xmobarColor "white" "" . shorten 60 }
+                { ppCurrent         = myPPCurrent
+                , ppHidden          = myPPHidden
+                , ppHiddenNoWindows = myPPHiddenNoWindows
+                , ppOrder           = myPPOrder
+                , ppOutput          = hPutStrLn h
+                , ppSep             = " | "
+                , ppTitle           = xmobarColor "white" "" . shorten 60 . pad }
 
 -- START UP
 myStartupHook = do
@@ -202,7 +206,7 @@ myConfig h = def {
                 modMask            = myModMask,
                 workspaces         = myWorkspaces,
                 normalBorderColor  = myNormalBorderColor,
-                focusedBorderColor = myFocusedBorderColor,
+                focusedBorderColor = red,
                 mouseBindings      = myMouseBindings,
                 layoutHook         = myLayoutHook,
                 manageHook         = myManageHook,
