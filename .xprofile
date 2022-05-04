@@ -1,0 +1,2 @@
+xsetroot -xcf /usr/share/icons/capitaine-cursors/cursors/left_ptr 36
+xrdb -merge ~/.Xresources
