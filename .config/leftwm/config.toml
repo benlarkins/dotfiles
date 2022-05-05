@@ -28,9 +28,15 @@ focus_new_windows = true
 
 [[keybind]]
 command = "Execute"
-value = "dmenu_run"
+value = "rofi -show drun"
 modifier = ["Control"]
 key = "space"
+
+[[keybind]]
+command = "Execute"
+value = "rofi -show window"
+modifier = ["Control"]
+key = "Tab"
 
 [[keybind]]
 command = "Execute"
