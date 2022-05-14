@@ -7,7 +7,8 @@ layout_mode = "Workspace"
 insert_behavior = "Bottom"
 scratchpad = [
     { name = "Screenshot", value = "gnome-screenshot -i", x = 0.445, y = 0.42, height = 355, width = 418 },
-    { name = "Keepass", value = "keepassxc", x = 1200, y = 650, height = 870, width = 1400 }
+    { name = "Keepass", value = "keepassxc", x = 1200, y = 650, height = 870, width = 1400 },
+    { name = "OBS", value = "obs", x = 1000, y = 450, height = 1322, width = 1876 }
 ]
 window_rules = [
     { window_class = "MPlayer", spawn_floating = true },
@@ -19,9 +20,11 @@ window_rules = [
     { window_class = "notification", spawn_floating = true },
     { window_class = "Xdg-desktop-portal-gtk", spawn_floating = true },
     { window_class = "gnome-screenshot", spawn_floating = true },
-    { window_class = "Gimp", spawn_floating = true }
+    { window_class = "Gimp", spawn_floating = true },
+    { window_title = "Choose what to share", spawn_floating = true },
 ]
-disable_current_tag_swap = false
+disable_current_tag_swap = true
+disable_window_snap = true
 disable_tile_drag = false
 focus_behaviour = "Sloppy"
 focus_new_windows = true
@@ -34,8 +37,20 @@ key = "space"
 
 [[keybind]]
 command = "Execute"
+value = "rofi -modi \"clipboard:greenclip print\" -show clipboard -run-command '{cmd}'"
+modifier = ["modkey"]
+key = "v"
+
+[[keybind]]
+command = "Execute"
+value = "rofi -show emoji -modi emoji"
+modifier = ["modkey"]
+key = "e"
+
+[[keybind]]
+command = "Execute"
 value = "rofi -show window"
-modifier = ["Control"]
+modifier = ["modkey"]
 key = "Tab"
 
 [[keybind]]
@@ -46,7 +61,7 @@ key = "Return"
 
 [[keybind]]
 command = "Execute"
-value = "arcolinux-logout"
+value = "archlinux-logout"
 modifier = ["modkey"]
 key = "x"
 
@@ -54,7 +69,13 @@ key = "x"
 command = "Execute"
 value = "brave"
 modifier = ["modkey"]
-key = "w"
+key = "b"
+
+[[keybind]]
+command = "ToggleScratchPad"
+value = "OBS"
+modifier = ["Control", "Shift"]
+key = "5"
 
 [[keybind]]
 command = "ToggleScratchPad"
@@ -63,8 +84,8 @@ modifier = ["modkey"]
 key = "p"
 
 [[keybind]]
-command = "ToggleScratchPad"
-value = "Screenshot"
+command = "Execute"
+value = "flameshot gui"
 modifier = ["Control", "Shift"]
 key = "4"
 
