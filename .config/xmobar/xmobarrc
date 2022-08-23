@@ -33,3 +33,4 @@ Config { font = "xft:FiraCode Nerd Font:weight=bold:pixelsize=14:antialias=true:
        , template = "  %UnsafeStdinReader%}\
                     \{ %btc-price%  <fn=1>%update-icon%</fn> %num-updates%  %KSLC%  %date%  %trayerpad%"
        }
+       

@@ -21,12 +21,14 @@ window_rules = [
     { window_class = "Xdg-desktop-portal-gtk", spawn_floating = true },
     { window_class = "gnome-screenshot", spawn_floating = true },
     { window_class = "Gimp", spawn_floating = true },
+    { window_class = "protonvpn", spawn_floating = true },
+    { window_class = "Pavucontrol", spawn_floating = true },
     { window_title = "Choose what to share", spawn_floating = true },
 ]
 disable_current_tag_swap = true
 disable_window_snap = true
 disable_tile_drag = false
-focus_behaviour = "Sloppy"
+focus_behaviour = "ClickTo"
 focus_new_windows = true
 
 [[keybind]]
@@ -66,12 +68,6 @@ modifier = ["modkey"]
 key = "x"
 
 [[keybind]]
-command = "Execute"
-value = "brave"
-modifier = ["modkey"]
-key = "b"
-
-[[keybind]]
 command = "ToggleScratchPad"
 value = "OBS"
 modifier = ["Control", "Shift"]
@@ -86,7 +82,7 @@ key = "p"
 [[keybind]]
 command = "Execute"
 value = "flameshot gui"
-modifier = ["Control", "Shift"]
+modifier = ["Alt", "Shift"]
 key = "4"
 
 [[keybind]]
@@ -97,9 +93,27 @@ key = "XF86XK_AudioPlay"
 
 [[keybind]]
 command = "Execute"
+value = "playerctl play-pause"
+modifier = ["modkey"]
+key = "m"
+
+[[keybind]]
+command = "Execute"
+value = "playerctl next"
+modifier = ["modkey"]
+key = "n"
+
+[[keybind]]
+command = "Execute"
 value = "playerctl next"
 modifier = []
 key = "XF86XK_AudioNext"
+
+[[keybind]]
+command = "Execute"
+value = "playerctl previous"
+modifier = ["modkey"]
+key = "b"
 
 [[keybind]]
 command = "Execute"
@@ -134,7 +148,7 @@ key = "XF86XK_AudioLowerVolume"
 [[keybind]]
 command = "CloseWindow"
 value = ""
-modifier = ["Control"]
+modifier = ["Control", "Shift"]
 key = "q"
 
 [[keybind]]

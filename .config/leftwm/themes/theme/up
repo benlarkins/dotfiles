@@ -25,7 +25,7 @@ if [ -x "$(command -v nitrogen)" ]; then
   nitrogen --restore &
 fi
 
-setxkbmap -option terminate:ctrl_alt_bksp,ctrl:swap_lalt_lctl_lwin,caps:escape &
+setxkbmap -option terminate:ctrl_alt_bksp,caps:escape &
 
 #start greenclip daemon
 pkill greenclip 
@@ -41,7 +41,7 @@ do
   let indextemp=index+1
   monitor=$(sed "$indextemp!d" <<<"$monitors")
   barname="mainbar$index"
-  monitor=$monitor offset=$x width=$width polybar -c $SCRIPTPATH/polybar.config $barname &> /dev/null &
+  monitor=$monitor offset=$x width=$width polybar -c ~/.config/polybar/polybar.config $barname &> /dev/null &
   let index=indextemp
 done
 
