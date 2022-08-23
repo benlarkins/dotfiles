@@ -1,3 +1,10 @@
+format = """
+$username $git_branch $git_status
+$directory$character
+"""
+
+add_newline = false
+
 [cmd_duration]
 disabled = true
 
