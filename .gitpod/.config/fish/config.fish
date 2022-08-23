@@ -5,7 +5,7 @@ alias udpate='sudo pacman -Syyu'
 alias upqll="paru -Syu --noconfirm"
 
 #list
-alias ll='ls -alH'
+alias ll='ls -lAh'
 alias ls='ls --color=auto'
 alias la='ls -a'
 alias l='ls'
