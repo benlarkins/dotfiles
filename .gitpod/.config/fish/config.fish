@@ -1,8 +1,3 @@
-function __nvm_auto --on-variable PWD
-  nvm use --silent 2>/dev/null
-end
-__nvm_auto
-
 #fix obvious typo's
 alias cd..='cd ..'
 alias pdw="pwd"
@@ -27,6 +22,7 @@ alias push='git push origin'
 alias vi='nvim'
 alias vim='nvim'
 
+load_nvm > /dev/stderr
 starship init fish | source
 fish_vi_key_bindings
 
