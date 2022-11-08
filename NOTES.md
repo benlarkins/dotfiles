@@ -20,3 +20,7 @@ EndSection
 ## VPN issues
 Start NetworkManager
 Install and run nm-applet (Note on Fedora the package is called network-manager-applet)
+
+## Cursor theme does not match between applications and background
+Edit /usr/share/icons/default/index.theme
+Find `Inherits=` and update to use the cursor theme
