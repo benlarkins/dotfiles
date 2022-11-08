@@ -1,3 +1,4 @@
+# Window manager setup
 
 ## Natural mouse scroll
 Edit /usr/share/X11/xorg.conf.d/40-libinput.conf
@@ -16,4 +17,6 @@ Section "InputClass"
 EndSection
 ```
 
-
+## VPN issues
+Start NetworkManager
+Install and run nm-applet (Note on Fedora the package is called network-manager-applet)
