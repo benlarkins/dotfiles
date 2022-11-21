@@ -26,3 +26,7 @@ Edit `/usr/share/icons/default/index.theme`
 Find `Inherits=` and update to use the cursor theme.
 
 NOTE: The cursor theme must be set to the theme directory name. For example `/usr/share/icons/{theme-directory-name}` `Inherits={theme-directory-name}`
+
+
+## Key remapping
+Use [keyd](https://github.com/rvaiya/keyd) to remap keys. This allows key remaps to work from one distro to another. Also allows oneshot and overloading.
