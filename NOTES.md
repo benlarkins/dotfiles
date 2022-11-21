@@ -23,4 +23,6 @@ Install and run nm-applet (Note on Fedora the package is called network-manager-
 
 ## Cursor theme does not match between applications and background
 Edit `/usr/share/icons/default/index.theme`
-Find `Inherits=` and update to use the cursor theme
+Find `Inherits=` and update to use the cursor theme.
+
+NOTE: The cursor theme must be set to the theme directory name. For example `/usr/share/icons/{theme-directory-name}` `Inherits={theme-directory-name}`
