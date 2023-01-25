@@ -30,6 +30,14 @@ function test_identities
     end
 end
 
+function sudo --description "Replacement for Bash 'sudo !!' command to run last command using sudo."
+    if test "$argv" = !!
+    eval command sudo $history[1]
+else
+    command sudo $argv
+    end
+end
+
 if [ -n "$SSH_AGENT_PID" ] 
     ps -ef | grep $SSH_AGENT_PID | grep ssh-agent > /dev/null
     if [ $status -eq 0 ]
@@ -46,6 +54,18 @@ else
         start_agent
     end  
 end
+
+function __nvm_auto --on-variable PWD
+  nvm use --silent 2>/dev/null
+end
+__nvm_auto
+
+fish_add_path ~/.local/bin
+
+zoxide init fish | source
+starship init fish | source
+set -g fish_greeting
+fish_vi_key_bindings
 
 #fix obvious typo's
 alias cd..='cd ..'
@@ -83,8 +103,4 @@ alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
 alias cat='bat'
 alias cd='z'
 alias grep='rg --color=auto'
-
-starship init fish | source
-set -g fish_greeting
-fish_vi_key_bindings
 

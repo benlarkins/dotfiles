@@ -1,2 +1,2 @@
 #!/usr/bin/sh
-checkupdates | wc -l
+dnf -q updateinfo list | wc -l
